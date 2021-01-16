@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Info Page Project</title>
+    <h1>Covid19 Information Page of Countries</h1>
+    {% block head %}{% endblock %}
+    <style>
+        body {
+          max-width: 600px;
+          margin: auto;
+          background-color: thistle;
+        }
+        .deneme {
+            box-sizing: content-box;
+            width: 40%;
+            padding: 8px;
+            margin: 10px 0;
+            display: inline-block;
+            border: black;
+            background: #cbcbe9;
+            font-size: 15px;
+        }
+        .submit{
+            background: #f6f6f7
+        }
+    </style>
+</head>
+<body>
+    <p>This Page is organized for getting Covid19 last informations based on Country
+    <br> 
+    <br>
+    Please Enter Country name</p>
+    <form action='/' method='POST'>
+    <input placeholder="US" type='text' name=infos id='infos' class="deneme">
+    <input type='submit' value= 'Enter Country' class="submit">
+    </form>
+    <br>
+<br>
+{% for key in results %}
+<table>
+    <tr>
+        <td style="font-size: .3in; color: crimson; column-width:300px;">{{key.upper()}}</td>
+        <td style="color: midnightblue; font-size: .25in;">:</td>
+        <td style="color: midnightblue; font-size: .25in; column-width: 200px;">{{results[key]}}</td>
+    </tr>
+</table>
+
+{% endfor %}
+<br>
+<a href="{{ url_for('about') }}">More Information about Covid19</a>
+<br>
+<p class="footnote"><i>This app is developed by <strong>Developer Name</strong> and deployed with Flask and Docker on AWS Resources that are EC2 Instance, ELB (Electronic Load Balance) and, Amazon Cognito.</i></p>
+
+{% block body %}{% endblock %}
+</body>
+</html>
